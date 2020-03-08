@@ -1,0 +1,9 @@
+apiVersion: storage.k8.io/v1
+kind: StorageClass
+metadata:
+  name: fast
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: ssd-pd
+
+# kubectl get storageclass

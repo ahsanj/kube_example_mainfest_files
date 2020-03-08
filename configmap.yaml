@@ -1,0 +1,23 @@
+# kubectl create configmap <map-name> <data-source>
+# data-store can be --from-file(from dir/file), --from-literal (key value pair)
+# kubectl create configmap game-config --from-file=configmap-example/
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis
+spec:
+  containers:
+  - name: redis
+    image: redis
+    volumeMounts:
+    - mountPath: /redis-master
+      name: config
+  volumes:
+    - name: config
+      configMap:
+        name: redis-config
+        items:
+        - key: redis-config
+          path: redis-conf
+
+        

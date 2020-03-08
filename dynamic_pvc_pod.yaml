@@ -1,0 +1,15 @@
+apiVesion: v1
+kind: Pod
+metadata:
+  name: pv-pod
+spec:
+  contaniers:
+  - name: test-contanier
+    image: nginx
+    volumeMounts:
+    - mountPath: /test-pd
+      name: test-volume
+  volumes:
+  - name: test-volume
+    persistentVolumeClaim:
+      claimName: my-disk-claim-1
